@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped" >
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Image</th>
+                <!-- <th>Add new record</th> -->
+                <!-- <th>Update</th> -->
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let resp of responseData;let i = index">
+                <td>{{resp.id}}</td>
+                <td>{{resp.email}}</td>
+                <td>{{resp.first_name}}</td>
+                <td>{{resp.last_name}}</td>
+                <td><img [src]='resp.avatar' style="width:30px;height:30px;"/></td>
+                <!-- <td><a href=""  (click)="addQuestion(resp)">Add</a></td> -->
+                <!-- <td><a href=""  (click)="updateQuestion(resp)">Update</a></td> -->
+                <td><a href=""  (click)="deleteQuestion(resp,i)">Delete</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+      <form #userForm="ngForm">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="email"  placeholder="Email" [(ngModel)]="userObject.email" >
+          </div>
+        </div>
+        <div class="form-group row pt-2">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Firstname</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="first_name"   placeholder="Firstname"  [(ngModel)]="userObject.first_name">
+          </div>
+        </div>
+        <div class="form-group row pt-2">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Lastname</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="last_name"   placeholder="Lastname" [(ngModel)]="userObject.last_name">
+          </div>
+        </div>
+        <div class="form-group row pt-2">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Image</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="avatar"  placeholder="image"  [(ngModel)]="userObject.avatar">
+          </div>
+        </div>
+       
+      
+        <div class="form-group row pt-2">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary" (click)="submit(userForm.value)" >Add new Record</button>
+          </div>
+        </div>
+      </form>
+
+
+      {{userObject | json}}
+    </div>
+    <div class="col-md-3">
+      
+    </div>
+  </div>
+</div>
+
+<!--   
+  {{responseData | json}} -->
